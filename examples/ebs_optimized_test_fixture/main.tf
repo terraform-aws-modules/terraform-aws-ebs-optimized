@@ -37,7 +37,6 @@ resource "aws_launch_configuration" "ebs_not_optimized" {
   name_prefix   = "test_ebs_not_optimized"
   image_id      = "${data.aws_ami.ubuntu.id}"
   instance_type = "${var.unsupported_type}"
-
   ebs_optimized = "${module.unsupported_ebs.answer}"
 }
 
