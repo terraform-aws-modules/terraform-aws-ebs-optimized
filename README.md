@@ -1,9 +1,12 @@
 # terraform-aws-ebs-optimized
 
-A terraform module to return true (1) or false (0) based on if an instance type
-supports the EBS optmized flag. If you want to use different instance types and
-would rather use EBS optimization whenever possible, this module does the heavy
-lifting of determining if that's possible.
+A terraform module to return true or false based on if an instance type
+supports the EBS optmized flag. If you want to use various instance types and
+EBS optimization, this module does the heavy lifting of determining if that's
+possible. Without the module, EC2 instance creation would fail on unsupported
+types and -- even worse -- launch configurations will create normally but fail
+silently when instances attempt to launch. This module means you don't need to
+think about that problem.
 
 ## Usage example
 
