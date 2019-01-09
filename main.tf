@@ -80,13 +80,18 @@
 
 locals {
   ebs_optimized = {
+    "a1.xlarge"    = true
+    "a1.2xlarge"   = true
+    "a1.4xlarge"   = true
+    "a1.large"     = true
+    "a1.medium"    = true
     "c1.medium"    = false
     "c1.xlarge"    = true
     "c3.2xlarge"   = true
     "c3.4xlarge"   = true
     "c3.8xlarge"   = false
     "c3.large"     = false
-    "c3.xlarge"    = false
+    "c3.xlarge"    = true
     "c4.2xlarge"   = true
     "c4.4xlarge"   = true
     "c4.8xlarge"   = true
@@ -104,6 +109,12 @@ locals {
     "c5d.9xlarge"  = true
     "c5d.large"    = true
     "c5d.xlarge"   = true
+    "c5n.18xlarge" = true
+    "c5n.2xlarge"  = true
+    "c5n.4xlarge"  = true
+    "c5n.9xlarge"  = true
+    "c5n.large"    = true
+    "c5n.xlarge"   = true
     "cc2.8xlarge"  = false
     "cr1.8xlarge"  = false
     "d2.2xlarge"   = true
@@ -117,6 +128,7 @@ locals {
     "g3.16xlarge"  = true
     "g3.4xlarge"   = true
     "g3.8xlarge"   = true
+    "g3s.xlarge"   = true
     "h1.16xlarge"  = true
     "h1.2xlarge"   = true
     "h1.4xlarge"   = true
@@ -157,6 +169,12 @@ locals {
     "m5.4xlarge"   = true
     "m5.large"     = true
     "m5.xlarge"    = true
+    "m5a.12xlarge" = true
+    "m5a.24xlarge" = true
+    "m5a.2xlarge"  = true
+    "m5a.4xlarge"  = true
+    "m5a.large"    = true
+    "m5a.xlarge"   = true
     "m5d.12xlarge" = true
     "m5d.24xlarge" = true
     "m5d.2xlarge"  = true
@@ -181,6 +199,24 @@ locals {
     "r4.8xlarge"   = true
     "r4.large"     = true
     "r4.xlarge"    = true
+    "r5a.12xlarge" = true
+    "r5a.24xlarge" = true
+    "r5a.2xlarge"  = true
+    "r5a.4xlarge"  = true
+    "r5a.large"    = true
+    "r5a.xlarge"   = true
+    "r5d.12xlarge" = true
+    "r5d.24xlarge" = true
+    "r5d.2xlarge"  = true
+    "r5d.4xlarge"  = true
+    "r5d.large"    = true
+    "r5d.xlarge"   = true
+    "r5.12xlarge"  = true
+    "r5.24xlarge"  = true
+    "r5.2xlarge"   = true
+    "r5.4xlarge"   = true
+    "r5.large"     = true
+    "r5.xlarge"    = true
     "t1.micro"     = false
     "t2.2xlarge"   = false
     "t2.large"     = false
@@ -189,6 +225,15 @@ locals {
     "t2.nano"      = false
     "t2.small"     = false
     "t2.xlarge"    = false
+    "t3.2xlarge"   = true
+    "t3.large"     = true
+    "t3.medium"    = true
+    "t3.micro"     = true
+    "t3.nano"      = true
+    "t3.small"     = true
+    "t3.xlarge"    = true
+    "u-6tbl.metal" = true
+    "u-9tbl.metal" = true
     "x1.16xlarge"  = true
     "x1.32xlarge"  = true
     "x1e.16xlarge" = true
@@ -197,5 +242,11 @@ locals {
     "x1e.4xlarge"  = true
     "x1e.8xlarge"  = true
     "x1e.xlarge"   = true
+    "z1d.12xlarge" = true
+    "z1d.2xlarge"  = true
+    "z1d.3xlarge"  = true
+    "z1d.6xlarge"  = true
+    "z1d.xlarge"   = true
+    "z1d.large"    = true
   }
 }
