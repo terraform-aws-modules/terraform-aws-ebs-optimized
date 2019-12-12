@@ -212,6 +212,7 @@ locals {
     "r5d.large"    = true
     "r5d.xlarge"   = true
     "r5.12xlarge"  = true
+    "r5.16xlarge"  = true
     "r5.24xlarge"  = true
     "r5.2xlarge"   = true
     "r5.4xlarge"   = true
