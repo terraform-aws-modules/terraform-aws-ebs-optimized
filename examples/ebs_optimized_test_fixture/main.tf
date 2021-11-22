@@ -1,9 +1,9 @@
 locals {
-  tags = "${map("Environment", "test",
-                "GithubRepo", "terraform-aws-ebs-optimized",
-                "GithubOrg", "terraform-aws-modules",
-                "Workspace", "${terraform.workspace}",
-  )}"
+  tags = {
+    "Environment" = "test"
+    "GithubRepo"  = "terraform-aws-ebs-optimized"
+    "GithubOrg"   = "terraform-aws-modules"
+  }
 }
 
 provider "aws" {
@@ -28,40 +28,40 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_launch_configuration" "ebs_optimized" {
   name_prefix   = "test_ebs_optimized"
-  image_id      = "${data.aws_ami.ubuntu.id}"
-  instance_type = "${var.supported_type}"
-  ebs_optimized = "${module.supported_ebs.answer}"
+  image_id      = data.aws_ami.ubuntu.id
+  instance_type = var.supported_type
+  ebs_optimized = module.supported_ebs.answer
 }
 
 resource "aws_launch_configuration" "ebs_not_optimized" {
   name_prefix   = "test_ebs_not_optimized"
-  image_id      = "${data.aws_ami.ubuntu.id}"
-  instance_type = "${var.unsupported_type}"
-  ebs_optimized = "${module.unsupported_ebs.answer}"
+  image_id      = data.aws_ami.ubuntu.id
+  instance_type = var.unsupported_type
+  ebs_optimized = module.unsupported_ebs.answer
 }
 
 resource "aws_instance" "ebs_optimized" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "${var.supported_type}"
-  ebs_optimized = "${module.supported_ebs.answer}"
-  tags          = "${merge(local.tags, map("Name", "test_ebs_optimized"))}"
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = var.supported_type
+  ebs_optimized = module.supported_ebs.answer
+  tags          = merge(local.tags, { "Name" = "test_ebs_optimized" })
 }
 
 resource "aws_instance" "ebs_not_optimized" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "${var.unsupported_type}"
-  ebs_optimized = "${module.unsupported_ebs.answer}"
-  tags          = "${merge(local.tags, map("Name", "test_not_ebs_optimized"))}"
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = var.unsupported_type
+  ebs_optimized = module.unsupported_ebs.answer
+  tags          = merge(local.tags, { "Name" = "test_not_ebs_optimized" })
 }
 
 module "supported_ebs" {
   source        = "../.."
-  instance_type = "${var.supported_type}"
+  instance_type = var.supported_type
 }
 
 module "unsupported_ebs" {
   source        = "../.."
-  instance_type = "${var.unsupported_type}"
+  instance_type = var.unsupported_type
 }
 
 module "unknown_type" {
